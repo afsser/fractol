@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:41:51 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/15 20:01:11 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/15 21:25:21 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	select_fractol(t_fractol *st)
 	// st->name = change_fractol(st);  = ORIGINAL
 
 	
-	// if (ft_strcmp(st->name, "mandelbrot") == 0)
-	// 	return (display_mandelbrot(st));
-	if (ft_strcmp(st->name, "julia") == 0)
-		return (display_julia(st));
+	if (ft_strcmp(st->name, "mandelbrot") == 0)
+		return (display_mandelbrot(st));
+	// if (ft_strcmp(st->name, "julia") == 0)
+	// 	return (display_julia(st));
 	// if (ft_strcmp(st->name, "burn") == 0)
 	// 	return (display_burning_ship(st));
 	// if (ft_strcmp(st->name, "tricorn") == 0)

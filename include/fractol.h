@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:56:36 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/15 20:07:20 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/15 21:24:28 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_fractol
 void			initialize_fractol(t_fractol *fractol, int nargs, char **args);
 void			select_fractol(t_fractol *st);
 
-// void			display_mandelbrot(t_fractol *fractol);
-void			display_julia(t_fractol *st);
+void			display_mandelbrot(t_fractol *fractol);
+// void			display_julia(t_fractol *st);
 // void			display_burning_ship(t_fractol *st);
 // void			display_tricorn(t_fractol *st);
 
