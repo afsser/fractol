@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:14 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/15 20:10:17 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:09:05 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_hook(void *param)
 	// zoom_keys(p);
 	mouse_movement(p);
 	// change_color(p);
-	// select_fractol(p);
+	select_fractol(p);
 }
 
 int main(int argc, char* argv[])

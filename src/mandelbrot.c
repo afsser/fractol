@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 21:23:27 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/15 21:43:34 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:34:20 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mandelbrot(double real, double imag, t_fractol *st)
 	{
 		r2 = r * r;
 		i2 = i * i;
-		if ((r2 + i2) > 6.0)
+		if ((r2 + i2) > 10.0)
 			return (iter);
 		i = 2 * r * i + imag;
 		r = r2 - i2 + real;
@@ -57,6 +57,14 @@ int	mandelbrot(double real, double imag, t_fractol *st)
 // 	mlx_put_pixel(st->img, st->x, st->y, color);
 // }
 
+void	pinta(int iter, t_fractol *st)
+{
+	double	interpolate;
+
+	interpolate = (double)iter / (double)st->max_iter;
+	mlx_put_pixel(st->img, st->x, st->y, (0x11111188 * interpolate));
+}
+
 void	display_mandelbrot(t_fractol *st)
 {
 	int		width;
@@ -76,7 +84,7 @@ void	display_mandelbrot(t_fractol *st)
 			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
 			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
 			iter = mandelbrot(real, imag, st);
-			mlx_put_pixel(st->img, st->x, st->y, 0xFFFFFF99);
+			pinta(iter, st);
 			st->y++;
 		}
 		st->x++;
