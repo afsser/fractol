@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:06:21 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/16 17:09:15 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:27:16 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	zoom_scroll(double xdelta, double ydelta, void *param)
 
 	st = param;
 	xdelta = 0;
-	zoom_factor = 1.1;
+	zoom_factor = 1.075;
 	mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
 	st->xzoom = st->xmin + st->xpos * ((st->xmax - st->xmin) / st->width);
 	st->yzoom = st->ymin + st->ypos * ((st->ymax - st->ymin) / st->height);

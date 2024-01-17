@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 21:23:27 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/16 17:34:20 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:26:50 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	pinta(int iter, t_fractol *st)
 {
 	double	interpolate;
 
-	interpolate = (double)iter / (double)st->max_iter;
+	interpolate = (double)iter / (double)st->max_iter * 1.1;
 	mlx_put_pixel(st->img, st->x, st->y, (0x11111188 * interpolate));
 }
 
