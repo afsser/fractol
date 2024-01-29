@@ -29,6 +29,8 @@ typedef struct s_fractol
 	uint32_t	y;
 	int			xpos;
 	int			ypos;
+	int32_t		xlast;
+	int32_t		ylast;
 	double		xzoom;
 	double		yzoom;
 	double		xmax;
@@ -47,6 +49,22 @@ typedef struct s_fractol
 	bool		active;
 }				t_fractol;
 
+typedef struct s_colors
+{
+	int			col1;
+	int			col2;
+	int			col3;
+	int			col4;
+	int			col5;
+	int			r1;
+	int			g1;
+	int			b1;
+	int			r2;
+	int			g2;
+	int			b2;
+	double		smooth;
+}				t_colors;
+
 void			initialize_fractol(t_fractol *fractol, int nargs, char **args);
 void			select_fractol(t_fractol *st);
 
@@ -58,6 +76,10 @@ void			display_mandelbrot(t_fractol *fractol);
 void			zoom_scroll(double xdelta, double ydelta, void *param);
 void			mouse_click_move(t_fractol *fractol);
 void			mouse_movement(t_fractol *st);
+
+void			change_color(t_fractol *st);
+void			init_color(t_colors *colors);
+int				interpolate_color(int c1, int c2, t_fractol *st, t_colors c);
 
 double			ft_atof(char *str);
 int				ft_strcmp(const char *s1, const char *s2);

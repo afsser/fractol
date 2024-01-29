@@ -49,7 +49,7 @@ void	ft_hook(void *param)
 	mouse_click_move(p);
 	// zoom_keys(p);
 	mouse_movement(p);
-	// change_color(p);
+	change_color(p);
 	select_fractol(p);
 }
 

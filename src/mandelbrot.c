@@ -35,35 +35,35 @@ int	mandelbrot(double real, double imag, t_fractol *st)
 	return (st->max_iter);
 }
 
-// void	mandelbrot_color(int iter, t_fractol *st)
-// {
-// 	int			color;
-// 	double		interpolate;
-// 	t_colors	c;
-
-// 	interpolate = (double)iter / (double)st->max_iter;
-// 	c.smooth = pow(interpolate, 0.647);
-// 	init_color(&c);
-// 	if (interpolate < 0.2)
-// 		color = st->ccolor * interpolate_color(c.col1, c.col2, st, c);
-// 	if (interpolate >= 0.2 && interpolate < 0.4)
-// 		color = st->ccolor * interpolate_color(c.col2, c.col1, st, c);
-// 	if (interpolate >= 0.4 && interpolate < 0.6)
-// 		color = st->ccolor * interpolate_color(c.col2, c.col3, st, c);
-// 	if (interpolate >= 0.6 && interpolate < 0.8)
-// 		color = st->ccolor * interpolate_color(c.col3, 0xffa94e, st, c);
-// 	if (interpolate >= 0.8)
-// 		color = st->ccolor * interpolate_color(c.col4, c.col5, st, c);
-// 	mlx_put_pixel(st->img, st->x, st->y, color);
-// }
-
-void	pinta(int iter, t_fractol *st)
+void	mandelbrot_color(int iter, t_fractol *st)
 {
-	double	interpolate;
+	int			color;
+	double		interpolate;
+	t_colors	c;
 
-	interpolate = (double)iter / (double)st->max_iter * 1.1;
-	mlx_put_pixel(st->img, st->x, st->y, (0x11111188 * interpolate));
+	interpolate = (double)iter / (double)st->max_iter;
+	c.smooth = pow(interpolate, 0.647);
+	init_color(&c);
+	if (interpolate < 0.2)
+		color = st->ccolor * interpolate_color(c.col1, c.col2, st, c);
+	if (interpolate >= 0.2 && interpolate < 0.4)
+		color = st->ccolor * interpolate_color(c.col2, c.col1, st, c);
+	if (interpolate >= 0.4 && interpolate < 0.6)
+		color = st->ccolor * interpolate_color(c.col2, c.col3, st, c);
+	if (interpolate >= 0.6 && interpolate < 0.8)
+		color = st->ccolor * interpolate_color(c.col3, 0xffa94e, st, c);
+	if (interpolate >= 0.8)
+		color = st->ccolor * interpolate_color(c.col4, c.col5, st, c);
+	mlx_put_pixel(st->img, st->x, st->y, color);
 }
+
+// void	pinta(int iter, t_fractol *st)
+// {
+// 	double	interpolate;
+
+// 	interpolate = (double)iter / (double)st->max_iter * 1.1;
+// 	mlx_put_pixel(st->img, st->x, st->y, (0x5ffffff11 * interpolate / 5));
+// }
 
 void	display_mandelbrot(t_fractol *st)
 {
@@ -84,7 +84,7 @@ void	display_mandelbrot(t_fractol *st)
 			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
 			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
 			iter = mandelbrot(real, imag, st);
-			pinta(iter, st);
+			mandelbrot_color(iter, st);
 			st->y++;
 		}
 		st->x++;

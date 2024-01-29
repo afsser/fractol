@@ -29,6 +29,8 @@ void	initialize_fractol(t_fractol *fractol, int nargs, char **args)
 	fractol->y = 0;
 	fractol->ccolor = 1;
 	fractol->active = 0;
+	fractol->xlast = 0;
+	fractol->ylast = 0;
 	if (ft_strcmp(fractol->name, "julia") == 0 && fractol->argc == 4)
 	{
 		fractol->xmax = 2.0;
@@ -37,18 +39,18 @@ void	initialize_fractol(t_fractol *fractol, int nargs, char **args)
 	}
 }
 
-char	*change_fractol(t_fractol *st)
-{
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_1))
-		return("mandelbrot");
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_2))
-		return("julia");
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_3))
-		return("burn");
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_4))
-		return("tricorn");
-	return (st->name);
-}
+// char	*change_fractol(t_fractol *st)
+// {
+// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_1))
+// 		return("mandelbrot");
+// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_2))
+// 		return("julia");
+// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_3))
+// 		return("burn");
+// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_4))
+// 		return("tricorn");
+// 	return (st->name);
+// }
 
 void	select_fractol(t_fractol *st)
 {

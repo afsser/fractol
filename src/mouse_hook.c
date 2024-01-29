@@ -14,20 +14,30 @@
 
 void	mouse_click_move(t_fractol *st)
 {
-	double	x_half;
-	double	y_half;
+	double		x_half;
+	double		y_half;
 
 	x_half = ((st->xmax - st->xmin) / 2.0);
 	y_half = ((st->ymax - st->ymin) / 2.0);
 	if (mlx_is_mouse_down(st->mlx, MLX_MOUSE_BUTTON_LEFT))
 	{
 		mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
-		st->xzoom = st->xmin + st->xpos * ((st->xmax - st->xmin) / st->width);
-		st->yzoom = st->ymin + st->ypos * ((st->ymax - st->ymin) / st->height);
-		st->xmin = st->xzoom - x_half;
-		st->xmax = st->xzoom + x_half;
-		st->ymin = st->yzoom - y_half;
-		st->ymax = st->yzoom + y_half;
+		if (st->xlast != 0 && st->ylast != 0)
+		{
+			st->xzoom = (st->xmax - st->xmin) / st->width;
+			st->yzoom = (st->ymax - st->ymin) / st->height;
+			st->xmin = st->xzoom * (st->xlast) - x_half;
+			st->xmax = st->xzoom * (st->xlast) + x_half;
+			st->ymin = st->yzoom * (st->xlast) - y_half;
+			st->ymax = st->yzoom * (st->xlast) + y_half;
+		}
+		st->xlast = st->xpos;
+		st->ylast = st->ypos;
+	}
+	else
+	{
+		st->xlast = 0;
+		st->ylast = 0;
 	}
 }
 
