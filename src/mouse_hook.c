@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:06:21 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/30 21:05:23 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:22:25 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	move(t_fractol *st, int dx, int dy)
 {
-		st->xmin -= dx * ((st->xmax - st->xmin) / st->width);
-		st->xmax -= dx * ((st->xmax - st->xmin) / st->width);
-		st->ymin -= dy * ((st->ymax - st->ymin) / st->height);
-		st->ymax -= dy * ((st->ymax - st->ymin) / st->height);
+	st->xmin -= dx * ((st->xmax - st->xmin) / st->width);
+	st->xmax -= dx * ((st->xmax - st->xmin) / st->width);
+	st->ymin -= dy * ((st->ymax - st->ymin) / st->height);
+	st->ymax -= dy * ((st->ymax - st->ymin) / st->height);
+	st->xstart = st->xpos;
+	st->ystart = st->ypos;
 }
 
 void	mouse_click_move(t_fractol *st)
@@ -35,11 +37,6 @@ void	mouse_click_move(t_fractol *st)
 		}
 		dx = st->xpos - st->xstart;
 		dy = st->ypos - st->ystart;
-		if (sqrt(dx * dx + dy * dy) > 0)
-		{
-			dx = dx * 40 / sqrt(dx * dx + dy * dy);
-			dy = dy * 40 / sqrt(dx * dx + dy * dy);
-		}
 		move(st, dx, dy);
 	}
 	else
