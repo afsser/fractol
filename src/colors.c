@@ -2,10 +2,10 @@
 
 void	init_color(t_colors *colors)
 {
-	colors->col1 = 0x8B0000;
-	colors->col2 = 0xFF6F00;
-	colors->col3 = 0xFFD700;
-	colors->col4 = 0x008aff;
+	colors->col1 = 0x7843E4;
+	colors->col2 = 0x1bb33c;
+	colors->col3 = 0x3cdd2d;
+	colors->col4 = 0xf091f8;
 	colors->col5 = 0x000000;
 }
 
@@ -32,11 +32,11 @@ void	change_color(t_fractol *st)
 	if (mlx_is_key_down(st->mlx, MLX_KEY_0))
 		st->ccolor = 1;
 	if (mlx_is_key_down(st->mlx, MLX_KEY_1))
-		st->ccolor = 0.99999;
+		st->ccolor = 0.833331;
 	if (mlx_is_key_down(st->mlx, MLX_KEY_2))
-		st->ccolor = 0.9919;
+		st->ccolor = 0.3333;
 	if (mlx_is_key_down(st->mlx, MLX_KEY_3))
-		st->ccolor = 0.965;
+		st->ccolor = 0.666;
 	if (mlx_is_key_down(st->mlx, MLX_KEY_4))
 		st->ccolor = 0.875;
 	if (mlx_is_key_down(st->mlx, MLX_KEY_5) || st->active)
