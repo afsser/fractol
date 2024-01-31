@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:41:51 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/15 21:25:21 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/30 21:08:23 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	initialize_fractol(t_fractol *fractol, int nargs, char **args)
 	fractol->y = 0;
 	fractol->ccolor = 1;
 	fractol->active = 0;
-	fractol->xlast = 0;
-	fractol->ylast = 0;
+	fractol->xstart = 0;
+	fractol->ystart = 0;
 	if (ft_strcmp(fractol->name, "julia") == 0 && fractol->argc == 4)
 	{
 		fractol->xmax = 2.0;

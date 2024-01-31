@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:14 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/16 17:09:05 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/30 21:08:05 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_hook(void *param)
 	select_fractol(p);
 }
 
-int main(int argc, char* argv[])
+int	main(int argc, char *argv[])
 {
 	t_fractol	fractol;
 	mlx_t		*mlx;

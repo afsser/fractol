@@ -6,38 +6,46 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:06:21 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/17 18:27:16 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/30 21:05:23 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+void	move(t_fractol *st, int dx, int dy)
+{
+		st->xmin -= dx * ((st->xmax - st->xmin) / st->width);
+		st->xmax -= dx * ((st->xmax - st->xmin) / st->width);
+		st->ymin -= dy * ((st->ymax - st->ymin) / st->height);
+		st->ymax -= dy * ((st->ymax - st->ymin) / st->height);
+}
+
 void	mouse_click_move(t_fractol *st)
 {
-	double		x_half;
-	double		y_half;
+	int	dx;
+	int	dy;
 
-	x_half = ((st->xmax - st->xmin) / 2.0);
-	y_half = ((st->ymax - st->ymin) / 2.0);
 	if (mlx_is_mouse_down(st->mlx, MLX_MOUSE_BUTTON_LEFT))
 	{
 		mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
-		if (st->xlast != 0 && st->ylast != 0)
+		if (st->xstart == 0 && st->ystart == 0)
 		{
-			st->xzoom = (st->xmax - st->xmin) / st->width;
-			st->yzoom = (st->ymax - st->ymin) / st->height;
-			st->xmin = st->xzoom * (st->xlast) - x_half;
-			st->xmax = st->xzoom * (st->xlast) + x_half;
-			st->ymin = st->yzoom * (st->xlast) - y_half;
-			st->ymax = st->yzoom * (st->xlast) + y_half;
+			st->xstart = st->xpos;
+			st->ystart = st->ypos;
 		}
-		st->xlast = st->xpos;
-		st->ylast = st->ypos;
+		dx = st->xpos - st->xstart;
+		dy = st->ypos - st->ystart;
+		if (sqrt(dx * dx + dy * dy) > 0)
+		{
+			dx = dx * 40 / sqrt(dx * dx + dy * dy);
+			dy = dy * 40 / sqrt(dx * dx + dy * dy);
+		}
+		move(st, dx, dy);
 	}
 	else
 	{
-		st->xlast = 0;
-		st->ylast = 0;
+		st->xstart = 0;
+		st->ystart = 0;
 	}
 }
 

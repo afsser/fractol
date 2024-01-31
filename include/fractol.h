@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:56:36 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/16 17:09:19 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:49:13 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_fractol
 	uint32_t	y;
 	int			xpos;
 	int			ypos;
-	int32_t		xlast;
-	int32_t		ylast;
+	int32_t		xstart;
+	int32_t		ystart;
 	double		xzoom;
 	double		yzoom;
 	double		xmax;
