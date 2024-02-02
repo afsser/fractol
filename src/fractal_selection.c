@@ -39,30 +39,43 @@ void	initialize_fractol(t_fractol *fractol, int nargs, char **args)
 	}
 }
 
-// char	*change_fractol(t_fractol *st)
-// {
-// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_1))
-// 		return("mandelbrot");
-// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_2))
-// 		return("julia");
-// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_3))
-// 		return("burn");
-// 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_4))
-// 		return("tricorn");
-// 	return (st->name);
-// }
+char	*change_fractol(t_fractol *st)
+{
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_1))
+		return("mandelbrot");
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_2))
+	{
+		st->creal = 0.285;
+		st->cimag = 0.01;
+		return("julia");
+	}
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_3))
+		return("tricorn");
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_4))
+	{
+		st->creal = -0.123;
+		st->cimag = 0.745;
+		return("julia");
+	}
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_5))
+	{
+		st->creal = -0.56;
+		st->cimag = 0.5;
+		return("julia");
+	}
+	return (st->name);
+}
 
 void	select_fractol(t_fractol *st)
 {
-	// st->name = change_fractol(st);  = ORIGINAL
-
+	st->name = change_fractol(st);
 	
 	if (ft_strcmp(st->name, "mandelbrot") == 0)
 		return (display_mandelbrot(st));
-	// if (ft_strcmp(st->name, "julia") == 0)
-	// 	return (display_julia(st));
-	// if (ft_strcmp(st->name, "burn") == 0)
-	// 	return (display_burning_ship(st));
+	if (ft_strcmp(st->name, "julia") == 0)
+		return (display_julia(st));
+	if (ft_strcmp(st->name, "tricorn") == 0)
+		return (display_tricorn(st));
 	// if (ft_strcmp(st->name, "tricorn") == 0)
 	// 	return (display_tricorn(st));
 }

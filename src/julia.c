@@ -35,6 +35,34 @@ int	julia(double real, double imag, t_fractol *st)
 	return (st->max_iter);
 }
 
+void	julia_pixel(int iter, t_fractol *st)
+{
+	int			color;
+	double		interpolate;
+	t_colors	c;
+
+	interpolate = (double)iter / (double)st->max_iter;
+	c.smooth = pow(interpolate, 0.762);
+	init_color(&c);
+	if (interpolate < 0.3)
+		color = st->ccolor * interpolate_color(c.col1, c.col2, st, c);
+	if (interpolate >= 0.3 && interpolate < 0.4)
+		color = st->ccolor * interpolate_color(c.col2, c.col3, st, c);
+	if (interpolate >= 0.4 && interpolate < 0.5)
+		color = st->ccolor * interpolate_color(c.col3, c.col4, st, c);
+	if (interpolate >= 0.5 && interpolate < 0.6)
+		color = st->ccolor * interpolate_color(c.col4, c.col3, st, c);
+	if (interpolate >= 0.6 && interpolate < 0.7)
+		color = st->ccolor * interpolate_color(c.col3, c.col5, st, c);
+	if (interpolate >= 0.7 && interpolate < 0.8)
+		color = st->ccolor * interpolate_color(c.col5, c.col3, st, c);
+	if (interpolate >= 0.8 && interpolate < 0.9)
+		color = st->ccolor * interpolate_color(c.col4, c.col3, st, c);
+	if (interpolate >= 0.9)
+		color = st->ccolor * interpolate_color(c.col3, c.col5, st, c);
+	mlx_put_pixel(st->img, st->x, st->y, color);
+}
+
 void	display_julia(t_fractol *st)
 {
 	int		width;
@@ -54,7 +82,7 @@ void	display_julia(t_fractol *st)
 			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
 			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
 			iter = julia(real, imag, st);
-			mlx_put_pixel(st->img, st->x, st->y, 0xFFFFFF);
+			julia_pixel(iter,st);
 			st->y++;
 		}
 		st->x++;

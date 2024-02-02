@@ -4,7 +4,8 @@ LIBMLX	:= ./.lib/MLX42
 BIN		:= bin
 
 FILES	= fractal_selection.c colors.c utils.c \
-			main.c mandelbrot.c mouse_hook.c julia.c
+			main.c mouse_hook.c key_hook.c \
+			mandelbrot.c julia.c tricorn.c
 
 M_PATH	= src
 

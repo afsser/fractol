@@ -12,7 +12,7 @@
 
 #include "../include/fractol.h"
 
-void	move(t_fractol *st, int dx, int dy)
+void	drag(t_fractol *st, int dx, int dy)
 {
 	st->xmin -= dx * ((st->xmax - st->xmin) / st->width);
 	st->xmax -= dx * ((st->xmax - st->xmin) / st->width);
@@ -22,7 +22,7 @@ void	move(t_fractol *st, int dx, int dy)
 	st->ystart = st->ypos;
 }
 
-void	mouse_click_move(t_fractol *st)
+void	mouse_click_drag(t_fractol *st)
 {
 	int	dx;
 	int	dy;
@@ -37,7 +37,7 @@ void	mouse_click_move(t_fractol *st)
 		}
 		dx = st->xpos - st->xstart;
 		dy = st->ypos - st->ystart;
-		move(st, dx, dy);
+		drag(st, dx, dy);
 	}
 	else
 	{

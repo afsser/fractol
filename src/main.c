@@ -14,13 +14,13 @@
 
 void	args_error(void)
 {
-	write(1, "Welcome to fcaldas- fractal's\n", 31);
+	write(1, "FRACT-OL\n", 9);
 	write(1, "\nUSAGE:\n", 8);
 	write(1, "\t./fractol [fractal name][params]\n", 34);
 	write(1, "\nEXAMPLES:\n", 11);
 	write(1, "\tfractol mandelbrot\t\tMandelbrot fractal\n", 40);
 	write(1, "\tfractol julia 0.285 +0.01i\tJulia fractal\n", 42);
-	write(1, "\tfractol burn\t\t\tBurning ship fractal\n", 37);
+	write(1, "\tfractol julia 0.4 +0.6i\t\tAlternate Julia set\n", 48);
 	write(1, "\tfractol tricorn\t\t\tTricorn fractal\n", 36);
 }
 
@@ -29,8 +29,6 @@ int	check_args(t_fractol st)
 	if (ft_strcmp(st.name, "mandelbrot") == 0 && st.argc == 2)
 		return (1);
 	if (ft_strcmp(st.name, "julia") == 0 && st.argc == 4)
-		return (1);
-	if (ft_strcmp(st.name, "burn") == 0 && st.argc == 2)
 		return (1);
 	if (ft_strcmp(st.name, "tricorn") == 0 && st.argc == 2)
 		return (1);
@@ -44,12 +42,12 @@ void	ft_hook(void *param)
 	p = (t_fractol *)param;
 	if (mlx_is_key_down(p->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(p->mlx);
-	// rigth_left(p);
-	// up_down(p);
-	mouse_click_move(p);
-	// zoom_keys(p);
+	move(p);
+	mouse_click_drag(p);
+	zoom(p);
 	mouse_movement(p);
 	change_color(p);
+	change_fractol(p);
 	select_fractol(p);
 }
 

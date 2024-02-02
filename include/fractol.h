@@ -65,17 +65,23 @@ typedef struct s_colors
 	double		smooth;
 }				t_colors;
 
+# define MOVE_SPEED 20
+
 void			initialize_fractol(t_fractol *fractol, int nargs, char **args);
 void			select_fractol(t_fractol *st);
 
 void			display_mandelbrot(t_fractol *fractol);
-// void			display_julia(t_fractol *st);
-// void			display_burning_ship(t_fractol *st);
+void			display_julia(t_fractol *st);
+void			display_tricorn(t_fractol *st);
+
 // void			display_tricorn(t_fractol *st);
 
 void			zoom_scroll(double xdelta, double ydelta, void *param);
-void			mouse_click_move(t_fractol *fractol);
+void			mouse_click_drag(t_fractol *fractol);
 void			mouse_movement(t_fractol *st);
+
+void			move(t_fractol *st);
+void			zoom(t_fractol *st);
 
 void			change_color(t_fractol *st);
 void			init_color(t_colors *colors);
