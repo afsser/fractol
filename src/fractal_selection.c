@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:41:51 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/30 21:25:18 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:07:46 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,26 @@ void	initialize_fractol(t_fractol *fractol, int nargs, char **args)
 char	*change_fractol(t_fractol *st)
 {
 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_1))
-		return("mandelbrot");
+		return ("mandelbrot");
 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_2))
 	{
 		st->creal = 0.285;
 		st->cimag = 0.01;
-		return("julia");
+		return ("julia");
 	}
 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_3))
-		return("tricorn");
+		return ("tricorn");
 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_4))
 	{
 		st->creal = -0.123;
 		st->cimag = 0.745;
-		return("julia");
+		return ("julia");
 	}
 	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_5))
 	{
 		st->creal = -0.56;
 		st->cimag = 0.5;
-		return("julia");
+		return ("julia");
 	}
 	return (st->name);
 }
@@ -69,13 +69,10 @@ char	*change_fractol(t_fractol *st)
 void	select_fractol(t_fractol *st)
 {
 	st->name = change_fractol(st);
-	
 	if (ft_strcmp(st->name, "mandelbrot") == 0)
 		return (display_mandelbrot(st));
 	if (ft_strcmp(st->name, "julia") == 0)
 		return (display_julia(st));
 	if (ft_strcmp(st->name, "tricorn") == 0)
 		return (display_tricorn(st));
-	// if (ft_strcmp(st->name, "tricorn") == 0)
-	// 	return (display_tricorn(st));
 }

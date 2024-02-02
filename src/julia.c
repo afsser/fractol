@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:41:09 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/15 20:37:10 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:08:25 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	display_julia(t_fractol *st)
 			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
 			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
 			iter = julia(real, imag, st);
-			julia_pixel(iter,st);
+			julia_pixel(iter, st);
 			st->y++;
 		}
 		st->x++;

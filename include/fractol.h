@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:56:36 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/01/30 20:49:13 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:06:40 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <../.lib/MLX42/include/MLX42/MLX42.h>
+# define MOVE_SPEED 20
 
 typedef struct s_fractol
 {
@@ -65,30 +66,27 @@ typedef struct s_colors
 	double		smooth;
 }				t_colors;
 
-# define MOVE_SPEED 20
+void	initialize_fractol(t_fractol *fractol, int nargs, char **args);
+void	select_fractol(t_fractol *st);
+char	*change_fractol(t_fractol *st);
 
-void			initialize_fractol(t_fractol *fractol, int nargs, char **args);
-void			select_fractol(t_fractol *st);
+void	display_mandelbrot(t_fractol *fractol);
+void	display_julia(t_fractol *st);
+void	display_tricorn(t_fractol *st);
 
-void			display_mandelbrot(t_fractol *fractol);
-void			display_julia(t_fractol *st);
-void			display_tricorn(t_fractol *st);
+void	zoom_scroll(double xdelta, double ydelta, void *param);
+void	mouse_click_drag(t_fractol *fractol);
+void	mouse_movement(t_fractol *st);
 
-// void			display_tricorn(t_fractol *st);
+void	move(t_fractol *st);
+void	zoom(t_fractol *st);
 
-void			zoom_scroll(double xdelta, double ydelta, void *param);
-void			mouse_click_drag(t_fractol *fractol);
-void			mouse_movement(t_fractol *st);
+void	change_color(t_fractol *st);
+void	init_color(t_colors *colors);
+int		interpolate_color(int c1, int c2, t_fractol *st, t_colors c);
 
-void			move(t_fractol *st);
-void			zoom(t_fractol *st);
-
-void			change_color(t_fractol *st);
-void			init_color(t_colors *colors);
-int				interpolate_color(int c1, int c2, t_fractol *st, t_colors c);
-
-double			ft_atof(char *str);
-int				ft_strcmp(const char *s1, const char *s2);
-char			*ft_strtolower(char *str);
+double	ft_atof(char *str);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strtolower(char *str);
 
 #endif
