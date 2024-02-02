@@ -19,7 +19,6 @@ all: $(BIN) $(LIBS) $(NAME)
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
-
 $(LIBS):
 ifeq ($(wildcard $(LIBMLX)/build/ ), )
 	@cd ./.lib/MLX42/ && cmake -B build
@@ -28,7 +27,6 @@ endif
 
 $(BIN):
 	@mkdir -p $(BIN)
-	@echo "bin foi criado\n"
 
 $(BIN)/%.o: $(M_PATH)/%.c | $(BIN)
 	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
